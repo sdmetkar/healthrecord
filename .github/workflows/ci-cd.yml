@@ -122,6 +122,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.organization=sdmetkar -Dsonar.projectKey=healthrecord -Dsonar.pullrequest.base=main -DskipTests
 
+
   deploy-staging:
     runs-on: ubuntu-latest
     name: Deploy to Staging
