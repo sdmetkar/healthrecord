@@ -1,22 +1,17 @@
-package com.openguv.healthrecord;
+package com.openguv.healthrecord.mapper;
 
 import com.openguv.healthrecord.entity.Gender;
 import com.openguv.healthrecord.entity.PatientEntity;
-import com.openguv.healthrecord.mapper.PatientMapper;
 import com.openguv.healthrecord.model.Patient;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
 public class PatientMapperTest {
 
-    @Autowired
-    private PatientMapper patientMapper;
+    private final PatientMapperImpl patientMapper = new PatientMapperImpl();
 
     @Test
     void toEntity_ShouldMapPatientToEntity() {
@@ -32,7 +27,7 @@ public class PatientMapperTest {
     }
 
     @Test
-    void toModel_ShouldMapEntityToPatient() {
+    void toSimpleDTO_ShouldMapEntityToPatient() {
         PatientEntity entity = new PatientEntity();
         entity.setId(1L);
         entity.setName("John Doe");

@@ -1,19 +1,14 @@
-package com.openguv.healthrecord;
+package com.openguv.healthrecord.mapper;
 
 import com.openguv.healthrecord.entity.DoctorEntity;
-import com.openguv.healthrecord.mapper.DoctorMapper;
 import com.openguv.healthrecord.model.Doctor;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
 public class DoctorMapperTest {
 
-    @Autowired
-    private DoctorMapper doctorMapper;
+    private final DoctorMapperImpl doctorMapper = new DoctorMapperImpl();
 
     @Test
     void toEntity_ShouldMapDoctorToEntity() {

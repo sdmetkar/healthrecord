@@ -1,23 +1,18 @@
-package com.openguv.healthrecord;
+package com.openguv.healthrecord.mapper;
 
 import com.openguv.healthrecord.entity.DoctorEntity;
 import com.openguv.healthrecord.entity.PatientEntity;
 import com.openguv.healthrecord.entity.VisitEntity;
-import com.openguv.healthrecord.mapper.VisitMapper;
 import com.openguv.healthrecord.model.Visit;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
 public class VisitMapperTest {
 
-    @Autowired
-    private VisitMapper visitMapper;
+    private final VisitMapperImpl visitMapper = new VisitMapperImpl();
 
     @Test
     void toDTO_ShouldMapEntityToVisit() {

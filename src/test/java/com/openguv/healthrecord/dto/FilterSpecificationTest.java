@@ -1,7 +1,5 @@
-package com.openguv.healthrecord;
+package com.openguv.healthrecord.dto;
 
-import com.openguv.healthrecord.dto.FilterNode;
-import com.openguv.healthrecord.dto.FilterSpecification;
 import com.openguv.healthrecord.entity.PatientEntity;
 import org.junit.jupiter.api.Test;
 import org.springframework.data.jpa.domain.Specification;
@@ -20,7 +18,7 @@ public class FilterSpecificationTest {
         FilterSpecification<PatientEntity> spec = new FilterSpecification<>(filterNode);
 
         assertNotNull(spec);
-        assertTrue(spec instanceof Specification);
+        assertInstanceOf(Specification.class, spec);
     }
 
     @Test
