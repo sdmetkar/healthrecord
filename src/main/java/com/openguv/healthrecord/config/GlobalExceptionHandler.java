@@ -16,6 +16,10 @@ import java.util.Map;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+    private static final String ERROR = "error";
+    private static final String STATUS = "status";
+    private static final String MESSAGE = "message";
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, Object>> handleValidationExceptions(MethodArgumentNotValidException ex) {
         Map<String, Object> response = new HashMap<>();
@@ -27,8 +31,8 @@ public class GlobalExceptionHandler {
             errors.put(fieldName, errorMessage);
         });
 
-        response.put("status", "error");
-        response.put("message", "Validation failed");
+        response.put(STATUS, ERROR);
+        response.put(MESSAGE, "Validation failed");
         response.put("errors", errors);
 
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
@@ -56,8 +60,8 @@ public class GlobalExceptionHandler {
             errors.put("format", "Invalid JSON format");
         }
 
-        response.put("status", "error");
-        response.put("message", "Invalid request format");
+        response.put(STATUS, ERROR);
+        response.put(MESSAGE, "Invalid request format");
         response.put("errors", errors);
 
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
@@ -82,8 +86,8 @@ public class GlobalExceptionHandler {
             errors.put(fieldName, errorMessage);
         });
 
-        response.put("status", "error");
-        response.put("message", "Validation failed");
+        response.put(STATUS, ERROR);
+        response.put(MESSAGE, "Validation failed");
         response.put("errors", errors);
 
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
@@ -93,9 +97,10 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, Object>> handleGenericException(Exception ex) {
         ex.printStackTrace();
         Map<String, Object> response = new HashMap<>();
-        response.put("status", "error");
-        response.put("message", ex.getMessage());
+        response.put(STATUS, ERROR);
+        response.put(MESSAGE, ex.getMessage());
         return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
 
 }
