@@ -58,7 +58,8 @@ Build and run with Docker:
 mvn clean package -DskipTests
 docker build -t healthrecord .
 docker run -p 8080:8080 healthrecord
-But above commands expect mysql to be running.
+But above commands expect mysql to be running 
+docker run --name healthrecord_db -e MYSQL_ROOT_PASSWORD=yours -e MYSQL_DATABASE=yours -p 3306:3306 -d mysql:8
 
 Use self sufficient compose file with mysql, prometheus and grafana in built
 docker compose -f .\docker-compose.monitoring.yml up --build  
