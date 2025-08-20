@@ -218,10 +218,9 @@ jobs:
         with:
           images: ${{ secrets.DOCKER_USERNAME }}/healthrecord
           tags: |
-            type=ref,event=branch
-            type=ref,event=pr
-            type=sha,prefix={{branch}}-
             type=raw,value=latest,enable={{is_default_branch}}
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
@@ -236,3 +235,9 @@ jobs:
 
       - name: Image digest
         run: echo ${{ steps.meta.outputs.digest }}
+
+      - name: Clean old tags
+        if: github.ref == 'refs/heads/main'
+        run: |
+          # Keep only latest 5 tags, remove older ones
+          echo "Cleaning old Docker tags (manual step - implement if needed)"
