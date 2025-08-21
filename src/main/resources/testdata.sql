@@ -1,12 +1,12 @@
 -- Insert test data for Doctor
-INSERT INTO doctor (id, name, specialty) VALUES
+INSERT IGNORE INTO doctor (id, name, specialty) VALUES
 (1, 'Dr Alice Smith', 'Cardiology'),
 (2, 'Dr Bob Johnson', 'Neurology'),
 (3, 'Dr Carol Lee', 'Pediatrics');
 
 
 -- Insert test data for Patient
-INSERT INTO patient (id, name, dob, gender) VALUES
+INSERT IGNORE INTO patient (id, name, dob, gender) VALUES
 (1, 'John Doe', '1980-01-15', 'Male'),
 (2, 'Jane Roe', '1975-05-20', 'Female'),
 (3, 'Sam Green', '1990-09-10', 'Male'),
@@ -14,7 +14,7 @@ INSERT INTO patient (id, name, dob, gender) VALUES
 (5, 'Tom White', '2000-07-22', 'Male');
 
 -- Insert test data for Visit (10 visits per patient)
-INSERT INTO visit (id, patient_id, date, doctor_id) VALUES
+INSERT IGNORE INTO visit (id, patient_id, date, doctor_id) VALUES
 -- Visits for John Doe
 (1, 1, '2024-01-01 10:00:00', 1),
 (2, 1, '2024-01-10 11:00:00', 2),
@@ -72,7 +72,7 @@ INSERT INTO visit (id, patient_id, date, doctor_id) VALUES
 (50, 5, '2024-04-05 14:00:00', 2);
 
 -- Insert test data for Diagnosis (one per visit)
-INSERT INTO diagnosis (id, visit_id, code, description) VALUES
+INSERT IGNORE INTO diagnosis (id, visit_id, code, description) VALUES
 -- Diagnoses for visits 1-10
 (1, 1, 'I10', 'Hypertension'),
 (2, 2, 'E11', 'Type 2 Diabetes'),
@@ -130,7 +130,7 @@ INSERT INTO diagnosis (id, visit_id, code, description) VALUES
 (50, 50, 'Z99', 'Dependence');
 
 -- Insert test data for Patient Cohort Selection Set
-INSERT INTO patient_cohort_selection_set (id, name, description, query_criteria) VALUES
+INSERT IGNORE INTO patient_cohort_selection_set (id, name, description, query_criteria) VALUES
 (1, 'All Males', 'All male patients', '{"op": "eq", "field": "gender", "value": "male"}'),
 (2, 'All Females', 'All female patients', '{"op": "eq", "field": "gender", "value": "female"}'),
 (3, 'Born After 1990-09-10', 'Patients Born After 1990-09-10', '{"op": "lt", "field": "dob", "value": "1990-09-10"}'),

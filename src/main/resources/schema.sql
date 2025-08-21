@@ -1,6 +1,6 @@
 -- healthrecord.diagnosis definition
 
-CREATE TABLE `diagnosis` (
+CREATE TABLE IF NOT EXISTS `diagnosis` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `code` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE `diagnosis` (
 
 -- healthrecord.doctor definition
 
-CREATE TABLE `doctor` (
+CREATE TABLE IF NOT EXISTS `doctor` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   `specialty` varchar(50) NOT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE `doctor` (
 
 -- healthrecord.patient definition
 
-CREATE TABLE `patient` (
+CREATE TABLE IF NOT EXISTS `patient` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `dob` date NOT NULL,
   `gender` enum('FEMALE','MALE','OTHER') NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE `patient` (
 
 -- healthrecord.patient_cohort_selection_set definition
 
-CREATE TABLE `patient_cohort_selection_set` (
+CREATE TABLE IF NOT EXISTS `patient_cohort_selection_set` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `description` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -51,7 +51,7 @@ CREATE TABLE `patient_cohort_selection_set` (
 
 -- healthrecord.visit definition
 
-CREATE TABLE `visit` (
+CREATE TABLE IF NOT EXISTS `visit` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `date` datetime(6) NOT NULL,
   `doctor_id` bigint NOT NULL,
